@@ -2,8 +2,10 @@
   <div class="home-page">
     <div class="banner">
       <div class="container">
-        <h1 class="logo-font">conduit</h1>
-        <p>A place to share your knowledge.</p>
+        <h1 class="logo-font">songs</h1>
+        <p><i>Your Spotify alternative</i></p>
+        <p><router-link to="/list/">list songs</router-link></p>
+        <p><router-link to="/upload/">upload</router-link></p>
       </div>
     </div>
     <div class="container page">
@@ -43,15 +45,15 @@
           </div>
           <router-view></router-view>
         </div>
-        <div class="col-md-3">
-          <div class="sidebar">
-            <p>Popular Tags</p>
-            <div class="tag-list">
-              <RwvTag v-for="(tag, index) in tags" :name="tag" :key="index">
-              </RwvTag>
-            </div>
-          </div>
-        </div>
+        <!--        <div class="col-md-3">-->
+        <!--          <div class="sidebar">-->
+        <!--            <p>Popular Tags</p>-->
+        <!--            <div class="tag-list">-->
+        <!--              <RwvTag v-for="(tag, index) in tags" :name="tag" :key="index">-->
+        <!--              </RwvTag>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
     </div>
   </div>

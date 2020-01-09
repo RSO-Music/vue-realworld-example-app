@@ -3,6 +3,9 @@
     <RwvArticleMeta isPreview :article="article" />
     <router-link :to="articleLink" class="preview-link">
       <h1 v-text="article.title" />
+      <h2 v-text="article.songName" />
+      <h1 v-text="article.authorId" />
+      <p v-text="article.albumId" />
       <p v-text="article.description" />
       <span>Read more...</span>
       <TagList :tags="article.tagList" />
@@ -17,8 +20,9 @@ import TagList from "./TagList";
 export default {
   name: "RwvArticlePreview",
   components: {
-    RwvArticleMeta,
-    TagList
+    RwvArticleMeta
+    // ,
+    // TagList
   },
   props: {
     article: { type: Object, required: true }

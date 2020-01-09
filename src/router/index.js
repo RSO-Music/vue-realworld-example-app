@@ -27,6 +27,16 @@ export default new Router({
       ]
     },
     {
+      name: "ListSongs",
+      path: "/list",
+      component: () => import("@/views/ListSongs")
+    },
+    {
+      name: "Upload",
+      path: "/upload",
+      component: () => import("@/views/Upload")
+    },
+    {
       name: "login",
       path: "/login",
       component: () => import("@/views/Login")
@@ -72,5 +82,11 @@ export default new Router({
       props: true,
       component: () => import("@/views/ArticleEdit")
     }
+    // ,
+    // {
+    //   name: "upload",
+    //   path: "/upload",
+    //   component: () => import("@/views/UploadSong")
+    // }
   ]
 });

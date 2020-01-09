@@ -18,19 +18,19 @@
       v-if="actions"
       :article="article"
       :canModify="isCurrentUser()"
-    ></rwv-article-actions>
-    <button
-      v-else
-      class="btn btn-sm pull-xs-right"
-      @click="toggleFavorite"
-      :class="{
-        'btn-primary': article.favorited,
-        'btn-outline-primary': !article.favorited
-      }"
-    >
-      <i class="ion-heart"></i>
-      <span class="counter"> {{ article.favoritesCount }} </span>
-    </button>
+    />
+    <!--    <button-->
+    <!--      v-else-->
+    <!--      class="btn btn-sm pull-xs-right"-->
+    <!--      @click="toggleFavorite"-->
+    <!--      :class="{-->
+    <!--        'btn-primary': article.favorited,-->
+    <!--        'btn-outline-primary': !article.favorited-->
+    <!--      }"-->
+    <!--    >-->
+    <!--      <i class="ion-heart"></i>-->
+    <!--      <span class="counter"> {{ article.favoritesCount }} </span>-->
+    <!--    </button>-->
   </div>
 </template>
 

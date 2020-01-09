@@ -47,10 +47,11 @@
           </RwvComment>
         </div>
       </div>
+      im
     </div>
   </div>
 </template>
-
+p
 <script>
 import { mapGetters } from "vuex";
 import marked from "marked";

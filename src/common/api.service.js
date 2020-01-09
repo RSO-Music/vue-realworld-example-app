@@ -14,6 +14,7 @@ const ApiService = {
     Vue.axios.defaults.headers.common[
       "Authorization"
     ] = `Token ${JwtService.getToken()}`;
+    axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
   },
 
   query(resource, params) {
