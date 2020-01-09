@@ -5,13 +5,36 @@
     <div class="large-12 medium-12 small-12 cell">
       <label>File
         <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+<!--        <input type="file" @change="uploadImage($event)">-->
       </label>
       <button v-on:click="submitFile()">Submit</button>
     </div>
+    <div class="form-group">
+      <label for="songName">Song name</label>
+      <input type="text"
+             id="songName"
+             class="form-control"
+             v-model="song.songName">
+      <label for="authorName">Author name</label>
+      <input type="text"
+             id="authorName"
+             class="form-control"
+             v-model="song.authorId">
+      <label for="albumName">Album name</label>
+      <input type="text"
+             id="albumName"
+             class="form-control"
+             v-model="song.albumId">
+      <button class="btn btn-primary"
+              @click.prevent="submitted">Subm it!
+      </button>
+    </div>
+
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
   // const request = require('request');
   import request from "request";
 
@@ -21,13 +44,29 @@
     data() {
       return {
         songs: null,
-        file: ''
+        file: '',
+        song: {
+          songName: '',
+          authorId: '',
+          albumId: ''
+        }
       };
     },
     loaded() {
       this.upload();
     },
     methods: {
+      uploadUserImage: function (formData) {
+        axios.post('http://34.89.111.13/v1/songs/upload', formData,
+          {
+            headers: {
+              'Content-Type': 'application/octet-stream'
+            }
+          })
+          .then(function (response) {
+            console.log(response)
+          })
+      },
       uploadFile() {
         console.log("inside log");
         "http://34.89.111.13/v1/songs"
@@ -37,6 +76,23 @@
             //this.listConfig = this.songs;
             console.log(this.songs);
           });
+      },
+      uploadRequest(){
+        const options = {
+          method: "POST",
+          url: "http://34.89.111.13/v1/songs/upload",
+          headers: {
+            "Content-Type": "application/octet-stream"
+          },
+          formData : {
+            "image" : fs.createReadStream("./images/scr1.png")
+          }
+        };
+
+        request(options, function (err, res, body) {
+          if(err) console.log(err);
+          console.log(body);
+        });
       },
       upload() {
         // const req = request.post("http://34.89.111.13/v1/songs/upload", function(err, resp, body) {
@@ -54,6 +110,7 @@
 
         const https = require("http");
         const fs = require('fs');
+
 
         const data = "Synymata.mp3";
 
@@ -92,13 +149,15 @@
         this.file = this.$refs.file.files[0];
       },
       submitFile(){
+        //const axios = require('axios');
+
         let formData = new FormData();
         formData.append('file', this.file);
-        axios.post( '/single-file',
+        axios.post( 'http://34.89.111.13/v1/songs/upload',
           formData,
           {
             headers: {
-              'Content-Type': 'multipart/form-data'
+              'Content-Type': 'application/octet-stream'
             }
           }
         ).then(function(){
@@ -107,6 +166,12 @@
           .catch(function(){
             console.log('FAILURE!!');
           });
+      },
+      uploadImage (e) {
+        this.file = e.currentTarget.files[0]
+        let formData = new FormData()
+        formData.append('img', this.file)
+        this.uploadUserImage(formData)
       }
     }
   };

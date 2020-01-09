@@ -8,10 +8,15 @@
         {{
           song
         }}
-        <router-link
-          :to="{ name: 'Stream', params: { songHash: song.songLength } }"
-          >STREAM
-        </router-link>
+        <a target="_blank" rel="noopener noreferrer" :href="
+        song.uri">
+          Stream!
+        </a>
+
+        <!--        <router-link-->
+<!--          :to="{ name: 'Stream', params: { songHash: song.songLength } }"-->
+<!--          >STREAM-->
+<!--        </router-link>-->
         <!--                <router-link to="/stream/{{song.id}}">Stream</router-link>-->
       </tr>
     </table>
