@@ -5,8 +5,22 @@
       <router-link to="/hello/">FirstRoute</router-link>
       <router-link to="/upload/">upload</router-link>
       <tr v-for="song in songs">
+<!--        {{song}}-->
+<!--        uri:-->
+<!--        {{-->
+<!--        song.songLength-->
+<!--        }}-->
+        Author:
         {{
-          song
+        song.authorId
+        }}
+        Album:
+        {{
+        song.albumId
+        }}
+        Song name:
+        {{
+        song.songName
         }}
         <a target="_blank" rel="noopener noreferrer" :href="
         song.uri">
@@ -18,6 +32,8 @@
 <!--          >STREAM-->
 <!--        </router-link>-->
         <!--                <router-link to="/stream/{{song.id}}">Stream</router-link>-->
+        <br>
+        <br>
       </tr>
     </table>
   </div>
